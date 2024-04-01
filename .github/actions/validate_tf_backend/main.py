@@ -6,7 +6,7 @@ import os
 # ./project1/app1/main.tf
 
 state_bucket = os.environ.get("STATE_BUCKET")
-file = os.environ.get("FILE_PATH")
+path = os.environ.get("FILE_PATH")
 # state_bucket = "tf-state-prod"
 # path = "./project1/app1/main.tf"
 
