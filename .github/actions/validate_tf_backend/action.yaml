@@ -41,6 +41,13 @@
 
 name: "Hello World"
 description: "Greet someone"
+inputs:
+  state_bucket:
+    description: 'Enter a bucket name'
+    required: true
+  path:
+    description: 'Enter a path to the terraform backend file'
+    required: true
 runs:
   using: "composite"
   steps:
