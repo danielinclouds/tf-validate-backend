@@ -35,7 +35,7 @@ jobs:
 
       - name: Validate Terraform Backend
         id: validate_terraform_backend
-        uses: .github/actions/validate_tf_backend/action.yaml
+        uses: ".github/actions/validate_tf_backend/"
         with:
           state_bucket: tf-state-prod
           path: project1/app1
