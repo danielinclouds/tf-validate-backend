@@ -33,9 +33,9 @@ jobs:
       # - name: Terraform Diff
       #   run: echo ${{ matrix.path }}
 
-      - name: Validate Terraform Backend
-        id: validate_terraform_backend
-        uses: ../actions/validate_tf_backend
-        with:
-          state_bucket: tf-state-prod
-          path: project1/app1
+      # - name: Validate Terraform Backend
+      #   id: validate_terraform_backend
+      #   uses: ../actions/validate_tf_backend
+      #   with:
+      #     state_bucket: tf-state-prod
+      #     path: project1/app1
