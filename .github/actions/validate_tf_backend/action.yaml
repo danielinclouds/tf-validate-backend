@@ -38,7 +38,9 @@ runs:
     - name: Validate Terraform Backend
       id: validate_tf_backend
       shell: bash
-      run: python main.py
+      run: |
+        cd ./.github/actions/validate_tf_backend/
+        python main.py
 
 
 # name: "Hello World"
