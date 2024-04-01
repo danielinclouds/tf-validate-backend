@@ -1,46 +1,5 @@
-# name: Validate Terraform Backend
-# # description: 'A GitHub Action that takes an input and returns the square of the number'
-# inputs:
-#   state_bucket:
-#     description: 'Enter a bucket name'
-#     required: true
-#   path:
-#     description: 'Enter a path to the terraform backend file'
-#     required: true
-# # outputs:
-# #   num_squared:
-# #     description: 'Square of the input'
-# #     # need to specify the extra `value` field for `composite` actions
-# #     value: ${{ steps.get-square.outputs.num_squared }}
-# runs:
-#   using: composite
-#   steps:
-#     # - name: Checkout
-#     #   uses: actions/checkout@v4
-
-#     - name: Install Python
-#       uses: actions/setup-python@v5
-#       # with:
-#       #   python-version: '3.10'  
-
-#     - name: Install Dependencies
-#       shell: bash
-#       run: pip install -r requirements.txt
-
-#     - name: Pass Inputs to Shell
-#       shell: bash
-#       run: |
-#         echo "STATE_BUCKET=${{ inputs.state_bucket }}" >> $GITHUB_ENV
-#         echo "PATH=${{ inputs.path }}" >> $GITHUB_ENV
-
-#     - name: Validate Terraform Backend
-#       id: validate_tf_backend
-#       shell: bash
-#       run: python main.py
-
-
-name: "Hello World"
-description: "Greet someone"
+name: Validate Terraform Backend
+# description: 'A GitHub Action that takes an input and returns the square of the number'
 inputs:
   state_bucket:
     description: 'Enter a bucket name'
@@ -48,8 +7,49 @@ inputs:
   path:
     description: 'Enter a path to the terraform backend file'
     required: true
+# outputs:
+#   num_squared:
+#     description: 'Square of the input'
+#     # need to specify the extra `value` field for `composite` actions
+#     value: ${{ steps.get-square.outputs.num_squared }}
 runs:
-  using: "composite"
+  using: composite
   steps:
-    - run: Write-host 'Hello world'
-      shell: powershell
+    # - name: Checkout
+    #   uses: actions/checkout@v4
+
+    - name: Install Python
+      uses: actions/setup-python@v5
+      # with:
+      #   python-version: '3.10'  
+
+    - name: Install Dependencies
+      shell: bash
+      run: pip install -r requirements.txt
+
+    - name: Pass Inputs to Shell
+      shell: bash
+      run: |
+        echo "STATE_BUCKET=${{ inputs.state_bucket }}" >> $GITHUB_ENV
+        echo "PATH=${{ inputs.path }}" >> $GITHUB_ENV
+
+    - name: Validate Terraform Backend
+      id: validate_tf_backend
+      shell: bash
+      run: python main.py
+
+
+# name: "Hello World"
+# description: "Greet someone"
+# inputs:
+#   state_bucket:
+#     description: 'Enter a bucket name'
+#     required: true
+#   path:
+#     description: 'Enter a path to the terraform backend file'
+#     required: true
+# runs:
+#   using: "composite"
+#   steps:
+#     - run: echo 'Hello world'
+#       shell: bash
