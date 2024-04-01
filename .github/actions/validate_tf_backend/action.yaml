@@ -4,7 +4,7 @@ inputs:
   state_bucket:
     description: 'Enter a bucket name'
     required: true
-  path:
+  file_path:
     description: 'Enter a path to the terraform backend file'
     required: true
 # outputs:
@@ -33,7 +33,7 @@ runs:
       shell: bash
       run: |
         echo "STATE_BUCKET=${{ inputs.state_bucket }}" >> $GITHUB_ENV
-        echo "PATH=${{ inputs.path }}" >> $GITHUB_ENV
+        echo "FILE_PATH=${{ inputs.file_path }}" >> $GITHUB_ENV
 
     - name: Validate Terraform Backend
       id: validate_tf_backend

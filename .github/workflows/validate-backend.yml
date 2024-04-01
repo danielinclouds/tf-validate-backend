@@ -37,5 +37,5 @@ jobs:
         id: validate_terraform_backend
         uses: ./.github/actions/validate_tf_backend/
         with:
-          state_bucket: tf-state-prod
-          path: project1/app1
+          state_bucket: 'tf-state-prod'
+          file_path: 'project1/app1'
