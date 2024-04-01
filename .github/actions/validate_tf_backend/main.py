@@ -10,6 +10,12 @@ path = os.environ.get("FILE_PATH")
 # state_bucket = "tf-state-prod"
 # path = "./project1/app1/main.tf"
 
+
+print("=============================")
+print(state_bucket)
+print(path)
+print("=============================")
+
 with open(path, 'r') as f:
     dict = hcl2.load(f)
 
