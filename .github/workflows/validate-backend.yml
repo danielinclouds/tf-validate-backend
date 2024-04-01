@@ -6,30 +6,36 @@ on:
   # - cron: "0 0 * * *"
 
 jobs:
-  list_tf_files:
-    runs-on: ubuntu-latest
-    outputs:
-      matrix: ${{ steps.set-matrix.outputs.matrix }}
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v4
+  # list_tf_files:
+  #   runs-on: ubuntu-latest
+  #   outputs:
+  #     matrix: ${{ steps.set-matrix.outputs.matrix }}
+  #   steps:
+  #   - name: Checkout
+  #     uses: actions/checkout@v4
 
-    - name: Set matrix
-      id: set-matrix
-      run: |
-        echo "matrix=$(find . -type f -name "*.tf" | jq -R -s -c 'split("\n")[:-1]')" >> $GITHUB_OUTPUT
+  #   - name: Set matrix
+  #     id: set-matrix
+  #     run: |
+  #       echo "matrix=$(find . -type f -name "*.tf" | jq -R -s -c 'split("\n")[:-1]')" >> $GITHUB_OUTPUT
 
   example_matrix:
-    needs: [list_tf_files]
+    # needs: [list_tf_files]
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix: 
-        path: ${{ fromJson(needs.list_tf_files.outputs.matrix) }}
+    # strategy:
+    #   fail-fast: false
+    #   matrix: 
+    #     path: ${{ fromJson(needs.list_tf_files.outputs.matrix) }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Terraform Diff
-        run: echo ${{ matrix.path }}
+      # - name: Terraform Diff
+      #   run: echo ${{ matrix.path }}
 
+      - name: Validate Terraform Backend
+        id: validate_terraform_backend
+        uses: ../actions/validate_tf_backend
+        with:
+          state_bucket: tf-state-prod
+          path: project1/app1
